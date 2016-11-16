@@ -47,8 +47,12 @@ class vro_nc_setup_module (
     parent               => 'All Nodes',
   }
 
-  $roles.each |$role| {
-  $role_class = "role::${role}"
+  $rolesfiles = generate ('/bin/bash', '-c', "/bin/ls  -1 /etc/puppetlabs/code/environments/${alternate_environment}")
+  $rolesfilesarray = split($rolesfiles,'\n')
+  $rolesfilesarray = regsubst($rolesfilesarray,'(.+?)(\.[^.]*$|$)', '\1')
+
+  $rolesfilesarray.each |$role| {
+      $role_class = "role::${role}"
       node_group { $role_class:
         ensure               => present,
         environment          => $alternate_environment,
