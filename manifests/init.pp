@@ -1,9 +1,6 @@
-##/vro_plugin_user/manifests/vro-plugin-user.pp
-## VRO Plugin user gets created here as well as assigned RBAC privileges,
-## as well as the /etc/sudoers.d/vro-plugin-user file, with the allowed
-## and disallowed commands required to manage/purge node certificates.
+##/vro_nc_setup_module/manifests/init.pp
 
-class vro_nc_setup (
+class vro_nc_setup_module (
   $alternate_environment  = 'dev',
   $autosign_example_class = 'autosign_example',
   $roles = ['linux_base', 'linux_mysql_database', 'linux_webserver', 'windows_base','windows_webserver']
