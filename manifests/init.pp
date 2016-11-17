@@ -31,7 +31,7 @@ class vro_nc_setup_module (
     ensure               => present,
     environment          => 'production',
     override_environment => false,
-    id                   => $autosign_group_id,
+#    id                   => $autosign_group_id,
     parent               => 'All Nodes',
     rule                 => ['and', ['=', [ 'trusted', 'certname' ], $::hostname]],
     classes              => {
@@ -43,7 +43,7 @@ class vro_nc_setup_module (
     ensure               => present,
     environment          => 'production',
     override_environment => false,
-    id                   => $roles_group_id,
+#    id                   => $roles_group_id,
     parent               => 'All Nodes',
   }
 
@@ -69,7 +69,7 @@ class vro_nc_setup_module (
     ensure               => present,
     environment          => 'production',
     override_environment => true,
-    id                   => $dev_env_group_id,
+#    id                   => $dev_env_group_id,
     parent               => 'Production',
     rule                 => ['and', ['=', [ 'trusted', 'extensions','pp_environment' ], $alternate_environment]],
     classes              => {},
