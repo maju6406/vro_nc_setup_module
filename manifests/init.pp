@@ -16,6 +16,7 @@ class vro_nc_setup_module (
     provider => git,
     source   => 'git@github.com:puppetlabs/puppet-vro-starter_content.git',
     revision => 'production',
+    require  => Package['git'],
   }
 
   package { 'puppetclassify':
