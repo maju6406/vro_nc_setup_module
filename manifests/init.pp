@@ -77,12 +77,12 @@ class vro_nc_setup_module (
 
 #  $pe_agent_specified_group = node_groups()
 #  $agent_specified_env_group_id= $pe_agent_specified_group['Agent-specified environment']['id']
-  $agent_specified_env_group_id= node_groups('Agent-specified environment')['Agent-specified environment']['id']
+#  $agent_specified_group = 'Agent-specified environment'
+#  $agent_specified_env_group_id= node_groups()['Agent-specified environment']['id']
   node_group { 'Agent-specified environment':
     ensure               => present,
     environment          => 'agent-specified',
     override_environment => true,
-    id                   => $agent_specified_env_group_id,
     parent               => 'Production',
     rule                 => ['and', ['=', [ 'trusted', 'extensions', 'pp_environment' ], 'agent-specified']],
     classes              => {},
