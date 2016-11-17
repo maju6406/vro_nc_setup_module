@@ -11,6 +11,10 @@ class vro_nc_setup_module (
   $dev_env_group_id='235a97b3-949b-48e0-8e8a-000000000888'
   $autosign_group_id='235a97b3-949b-48e0-8e8a-000000000999'
 
+  package { 'git':
+    ensure => 'installed',
+  }
+
   vcsrepo { "/etc/puppetlabs/code/environments/${alternate_environment}":
     ensure   => latest,
     provider => git,
