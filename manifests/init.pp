@@ -3,7 +3,7 @@
 class vro_nc_setup_module (
   $alternate_environment  = 'dev',
   $autosign_example_class = 'autosign_example',
-  $roles = ['linux_base', 'linux_mysql_database', 'linux_webserver', 'windows_base','windows_webserver']
+#  $roles = ['linux_base', 'linux_mysql_database', 'linux_webserver', 'windows_base','windows_webserver']
 ){
 
   $all_nodes_id='00000000-0000-4000-8000-000000000000'
@@ -49,9 +49,9 @@ class vro_nc_setup_module (
 
   $rolesfiles = generate ('/bin/bash', '-c', "/bin/ls  -1 /etc/puppetlabs/code/environments/${alternate_environment}")
   $rolesfilesarray = split($rolesfiles,'\n')
-  $rolesfilesarray = regsubst($rolesfilesarray,'(.+?)(\.[^.]*$|$)', '\1')
+  $roles = regsubst($rolesfilesarray,'(.+?)(\.[^.]*$|$)', '\1')
 
-  $rolesfilesarray.each |$role| {
+  $roles.each |$role| {
       $role_class = "role::${role}"
       node_group { $role_class:
         ensure               => present,
