@@ -75,8 +75,9 @@ class vro_nc_setup_module (
     classes              => {},
   }
 
-  $pe_agent_specified_group = node_groups()
-  $agent_specified_env_group_id= $pe_agent_specified_group['Agent-specified environment']['id']
+#  $pe_agent_specified_group = node_groups()
+#  $agent_specified_env_group_id= $pe_agent_specified_group['Agent-specified environment']['id']
+  $agent_specified_env_group_id= node_groups('Agent-specified environment')['Agent-specified environment']['id']
   node_group { 'Agent-specified environment':
     ensure               => present,
     environment          => 'agent-specified',
