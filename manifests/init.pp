@@ -18,7 +18,7 @@ class vro_nc_setup_module (
   vcsrepo { "/etc/puppetlabs/code/environments/${alternate_environment}":
     ensure   => latest,
     provider => git,
-    source   => 'git@github.com:puppetlabs/puppet-vro-starter_content.git',
+    source   => 'https://github.com/puppetlabs/puppet-vro-starter_content.git',
     revision => 'production',
     require  => Package['git'],
   }
